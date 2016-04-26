@@ -26,7 +26,7 @@ class RoketinServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind('roketin', function () {
-            return new \App\Roketin\Roketin();
+            return new \Roketin\Roketin();
         });
     }
 

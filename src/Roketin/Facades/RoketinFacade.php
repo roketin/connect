@@ -4,7 +4,7 @@ namespace Roketin\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
-class Roketin extends Facade
+class RoketinFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {

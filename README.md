@@ -12,7 +12,22 @@ Documentation for the Roketin API can be found on the [Documentation](http://doc
 
 ## Installation
 
-coming soon
+### Laravel 5
+
+```php
+"require": {
+    "laravel/framework": "5.0.*",
+    "sukorenomw/rclient": "dev-master"
+}
+```
+
+Next, run the Composer update command from the Terminal:
+
+    composer update
+
+    or
+
+    composer update "sukorenomw/rclient"
 
 ## CONFIGURATION
 

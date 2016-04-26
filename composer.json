@@ -23,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "RClient\\": "src/Roketin"
+            "Roketin\\": "src/Roketin"
         }
     },
     "minimum-stability": "stable"

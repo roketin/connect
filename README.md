@@ -30,8 +30,22 @@ Next, run the Composer update command from the Terminal:
     composer update "sukorenomw/rclient"
 
 ## CONFIGURATION
+1. Open config/app.php and addd this line to your Service Providers Array
+  ```php
+    Roketin\Providers\RoketinServiceProvider::class,
+  ```
 
-1. Create an .env file based on .env.example file and change the value based on client credentials
+2. Open config/app.php and addd this line to your Aliases
+
+```php
+    'Roketin' => Roketin\Facades\RoketinFacade::class
+  ```
+
+3. Publish the config using the following command:
+
+    $ php artisan vendor:publish --provider="Roketin\Providers\RoketinServiceProvider"
+
+4. Create an .env file based on .env.example file and change the value based on client credentials
   
   ```
     APP_ENV=local

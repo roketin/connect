@@ -1,0 +1,30 @@
+{
+    "name": "sukorenomw/rclient",
+    "description": "Roketin Engine API Client",
+    "keywords": ["laravel", "api", "engine", "client", "apiclient", "rest"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sukoreno Mukti",
+            "email": "sukorenomw@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5.0",
+        "illuminate/http": "5.1.* || 5.2.*",
+        "illuminate/support": "5.1.* || 5.2.*",
+        "guzzlehttp/guzzle": "~5.3|~6.0",
+        "intervention/image": "^2.3"
+    },
+    "require-dev": {
+        "mockery/mockery": "~0.9",
+        "phpunit/phpunit": "~4.0",
+        "symfony/var-dumper": "2.7.*@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "RClient\\": "src/Roketin"
+        }
+    },
+    "minimum-stability": "dev"
+}

@@ -13,7 +13,9 @@ class RoketinServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $path = realpath(__DIR__ . '/../../config/config.php');
+        $this->publishes([$path => config_path('roketin.php')], 'config');
+        $this->mergeConfigFrom($path, 'roketin');
     }
 
     /**

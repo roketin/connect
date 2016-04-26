@@ -26,5 +26,5 @@
             "RClient\\": "src/Roketin"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "stable"
 }

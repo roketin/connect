@@ -120,12 +120,9 @@ class Roketin
         return $this;
     }
 
-    public function take($size)
-    {
-        $this->routes .= "&size=" . $size;
-        return $this;
-    }
-
+    /**
+     * @return mixed
+     */
     public function random()
     {
         $this->routes .= "&random=true";
@@ -147,6 +144,15 @@ class Roketin
      */
     public function get()
     {
+        return is_null($this->retval) ? $this->callAPI($this->routes) : $this->retval;
+    }
+
+    /**
+     * @param $size
+     */
+    public function take($size)
+    {
+        $this->routes .= "&size=" . $size;
         return is_null($this->retval) ? $this->callAPI($this->routes) : $this->retval;
     }
 
@@ -235,6 +241,9 @@ class Roketin
         }
     }
 
+    /**
+     * @param $val
+     */
     protected function _camelToSnake($val)
     {
         return preg_replace_callback('/[A-Z]/',

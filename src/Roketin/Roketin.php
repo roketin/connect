@@ -120,6 +120,18 @@ class Roketin
         return $this;
     }
 
+    public function take($size)
+    {
+        $this->routes .= "&size=" . $size;
+        return $this;
+    }
+
+    public function random()
+    {
+        $this->routes .= "&random=true";
+        return $this;
+    }
+
     /**
      * @param $field
      * @return mixed
@@ -214,6 +226,9 @@ class Roketin
             ]);
             return json_decode($response->getBody()->getContents());
         } catch (\GuzzleHttp\Exception\RequestException $e) {
+            if (is_null($e->getResponse())) {
+                throw new \Exception($e->getMessage(), 422);
+            }
             return json_decode($e->getResponse()->getBody()->getContents());
         } catch (\Exception $e) {
             return json_decode($e->getMessage());

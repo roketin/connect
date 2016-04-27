@@ -1,8 +1,7 @@
 # Roketin Client Template
-
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
+[![Latest Version](https://img.shields.io/github/release/sukorenomw/RClient.svg?style=flat-square)](https://github.com/sukorenomw/RClient/releases)
 [![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+[![Total Downloads](https://img.shields.io/packagist/dt/sukorenomw/RClient.svg?style=flat-square)](https://packagist.org/packages/sukorenomw/RClient)
 
 RClient is standard client application to [Roketin API](http://www.roketin.com)  to accelerate connecting and integrating basic feature of Roketin Engine API to client's website.
 

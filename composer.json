@@ -1,5 +1,5 @@
 {
-    "name": "sukorenomw/rclient",
+    "name": "roketin/connect",
     "description": "Roketin Engine API Client",
     "keywords": ["laravel", "api", "engine", "client", "apiclient", "rest"],
     "license": "MIT",

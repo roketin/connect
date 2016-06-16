@@ -241,7 +241,7 @@ Calculate shipping costs:
      * @param $origin = city id
      */
 
-    $costs = Roketin::shipping()->cost(23, 'JNE')
+    $costs = Roketin::shipping()->costs(23, 'JNE')
 ```
 
 ## Order
@@ -273,7 +273,7 @@ Create sales order:
              "price_type" => "retail_price",
          ],
      ];                                 
-    $order = Roketin::order()->create([], 'JNE')
+    $order = Roketin::order()->create([])
 ```
  
 > **Note:**

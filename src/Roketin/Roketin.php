@@ -168,6 +168,15 @@ class Roketin
     /**
      * @return mixed
      */
+    public function tags($tag = null, $blog = false)
+    {
+        $this->routes = is_null($tag) ? "tags" : "tag/" . $tag . "/" . $blog;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
     public function shipping()
     {
         return new RShipping();

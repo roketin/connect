@@ -69,6 +69,7 @@ Next, run the Composer update command from the Terminal:
 * [Sorting](#sorting)
 * [Grouping](#grouping)
 * [Pagination](#pagination)
+* [Tags](#tags)
 * [Shipping](#shipping)
 * [Sales Order](#order)
 * [Subscribe](#subscribe)
@@ -211,6 +212,22 @@ Paginating fetch object
     $posts = Roketin::posts()->paginate(10,2)->get();
 ```
 
+## Tags
+
+Get all tags post:
+```php
+    $tags = Roketin::tags()->get()
+```
+
+Get all posts by tag:
+```php
+    /*
+     * @param $tag
+     * @param $is_blog (optional) default value is false
+     */
+    $posts = Roketin::tags('tag',false)->get()
+```
+
 ## Shipping
 
 Get all available countries:
@@ -255,7 +272,9 @@ Create sales order:
      
      $generalData = [
             "notes"         => "some string here",
-            "is_email_only" => true,
+            "is_email_only" => true, //default value false (for customer guest)
+            "ship_cost"     => 10000,
+            'ship_provider' => "JNE"
      ];
 
      $customerData = [

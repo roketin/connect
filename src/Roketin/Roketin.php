@@ -170,7 +170,7 @@ class Roketin
      */
     public function tags($tag = null, $blog = false)
     {
-        $this->routes = is_null($tag) ? "tags" : "tag/" . $tag . "/" . $blog;
+        $this->routes = is_null($tag) ? "tags" : "posts/tag?tags=" . $tag . "&is_blog=" . ($blog ?: 'false');
         return $this;
     }
 

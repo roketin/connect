@@ -47,7 +47,7 @@ class ROrder extends Roketin
      * @param null $paid_date
      * @return mixed
      */
-    public function confirm($invoice_number, $payment_type, $total, $customer_name, $transaction_number, Image $image = null, $bank_account = null, $paid_date = null)
+    public function confirm($invoice_number, $payment_type, $total, $customer_name, $customer_bank = null, $transaction_number, Image $image = null, $bank_account = null, $paid_date = null)
     {
         if (in_array($payment_type, ["CASH", "TRANSFER"]) && is_null($image)) {
             throw new \Exception("Image must be present", 422);
@@ -60,6 +60,6 @@ class ROrder extends Roketin
         }
         $paid_on = is_null($paid_date) ? Carbon::now() : $paid_date;
         $name    = $customer_name;
-        return $this->callAPI("payment/confirm", compact('invoice_number', 'payment_type', 'total', 'name', 'transaction_number', 'image', 'paid_on', 'bank_account'), "POST");
+        return $this->callAPI("payment/confirm", compact('invoice_number', 'payment_type', 'total', 'name', 'customer_bank', 'transaction_number', 'image', 'paid_on', 'bank_account'), "POST");
     }
 }

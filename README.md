@@ -1,7 +1,7 @@
 # Roketin Client Template
-[![Latest Version](https://img.shields.io/github/release/sukorenomw/RClient.svg?style=flat-square)](https://github.com/sukorenomw/RClient/releases)
+[![Latest Version](https://img.shields.io/github/release/roketin/connect.svg?style=flat-square)](https://github.com/roketin/connect/releases)
 [![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](https://packagist.org/packages/laravel/framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/sukorenomw/RClient.svg?style=flat-square)](https://packagist.org/packages/sukorenomw/RClient)
+[![Total Downloads](https://img.shields.io/packagist/dt/roketin/connect.svg?style=flat-square)](https://packagist.org/packages/roketin/connect)
 
 RClient is standard client application to [Roketin API](http://www.roketin.com)  to accelerate connecting and integrating basic feature of Roketin Engine API to client's website.
 
@@ -16,7 +16,7 @@ Documentation for the Roketin API can be found on the [Documentation](http://doc
 ```php
 "require": {
     "laravel/framework": "5.0.*",
-    "roketin/connect": "v0.0.3"
+    "roketin/connect": "v0.0.4"
 }
 ```
 
@@ -222,10 +222,10 @@ Get all tags post:
 Get all posts by tag:
 ```php
     /*
-     * @param $tag
+     * @param $tag separated by ';'
      * @param $is_blog (optional) default value is false
      */
-    $posts = Roketin::tags('tag',false)->get()
+    $posts = Roketin::tags('tag_1;tag_2',false)->get()
 ```
 
 ## Shipping
@@ -278,10 +278,10 @@ Create sales order:
      ];
 
      $customerData = [
-            "first_name" => "Sukoreno",
-            "last_name"  => "Mukti",
-            "phone"      => "+6281910513704",
-            "email"      => "sukorenomw@gmail.com",
+            "first_name" => "Roketin",
+            "last_name"  => "User",
+            "phone"      => "+628123456789",
+            "email"      => "user@roketin.com",
      ];
 
      $products = [
@@ -306,6 +306,7 @@ Confirm payment order:
      * @param $payment_type
      * @param $total
      * @param $customer_name
+     * @param $customer_bank
      * @param $transaction_number
      * @param Image $image
      * @param null $bank_account
@@ -321,7 +322,8 @@ Confirm payment order:
                 ->confirm('SI16041300058', 
                           'TRANSFER', 
                           '150000', 
-                          'Sukoreno Mukti', 
+                          'Customer Roketin', 
+                          'Bank BCA', 
                           'TRX-123', 
                           $img, 
                           '0853909090')

@@ -2,7 +2,7 @@
 
 namespace Roketin;
 
-class RMessage extends Roketin
+class RB2b extends Roketin
 {
     public function __construct()
     {
@@ -18,8 +18,8 @@ class RMessage extends Roketin
      * @param $bcc
      * @return mixed
      */
-    public function send($name, $email, $phone, $title, $message, $bcc = null)
+    public function join($name, $email, $phone, $title, $message, $bcc = null, $requestb2b = true)
     {
-        return $this->callAPI("message", compact('name', 'email', 'phone', 'title', 'message', 'bcc'), "POST");
+        return $this->callAPI("message", compact('name', 'email', 'phone', 'title', 'message', 'bcc', 'requestb2b'), "POST");
     }
 }

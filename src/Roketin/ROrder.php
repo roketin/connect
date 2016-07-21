@@ -18,11 +18,16 @@ class ROrder extends Roketin
      * @param array $generalData
      * @param array $customerData
      * @param array $products
+     * @param array $bcc
      * @return mixed
      */
-    public function create(array $generalData, array $customerData, array $products)
+    public function create(array $generalData, array $customerData, array $products, $bcc = null)
     {
-        $params = array_merge(["general" => $generalData], ["customer_data" => $customerData], ["product_detail" => $products]);
+        if (!is_null($bcc)) {
+            $params = array_merge(["general" => $generalData], ["customer_data" => $customerData], ["product_detail" => $products]);
+        } else {
+            $params = array_merge(["general" => $generalData], ["customer_data" => $customerData], ["product_detail" => $products], ['bcc' => $bcc]);
+        }
 
         return $this->callAPI("order", $params, "POST");
     }
@@ -45,9 +50,10 @@ class ROrder extends Roketin
      * @param Image $image
      * @param null $bank_account
      * @param null $paid_date
+     * @param null $bcc
      * @return mixed
      */
-    public function confirm($invoice_number, $payment_type, $total, $customer_name, $customer_bank = null, $transaction_number, Image $image = null, $bank_account = null, $paid_date = null)
+    public function confirm($invoice_number, $payment_type, $total, $customer_name, $customer_bank = null, $transaction_number, Image $image = null, $bank_account = null, $paid_date = null, $bcc = null)
     {
         if (in_array($payment_type, ["CASH", "TRANSFER"]) && is_null($image)) {
             throw new \Exception("Image must be present", 422);
@@ -60,6 +66,6 @@ class ROrder extends Roketin
         }
         $paid_on = is_null($paid_date) ? Carbon::now() : $paid_date;
         $name    = $customer_name;
-        return $this->callAPI("payment/confirm", compact('invoice_number', 'payment_type', 'total', 'name', 'customer_bank', 'transaction_number', 'image', 'paid_on', 'bank_account'), "POST");
+        return $this->callAPI("payment/confirm", compact('invoice_number', 'payment_type', 'total', 'name', 'customer_bank', 'transaction_number', 'image', 'paid_on', 'bank_account', 'bcc'), "POST");
     }
 }

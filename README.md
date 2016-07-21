@@ -74,6 +74,7 @@ Next, run the Composer update command from the Terminal:
 * [Sales Order](#order)
 * [Subscribe](#subscribe)
 * [Message](#message)
+* [B2b](#join)
 * [Voucher](#voucher)
 * [Users](#user)
 
@@ -268,6 +269,7 @@ Create sales order:
      * @param array $generalData
      * @param array $customerData
      * @param array $products
+     * @param $bcc(optional), default = null
      */
      
      $generalData = [
@@ -292,7 +294,7 @@ Create sales order:
              "price_type" => "retail_price",
          ],
      ];                                 
-    $order = Roketin::order()->create([])
+    $order = Roketin::order()->create($generalData, $customerData, $products, 'test@mailinator.com')
 ```
  
 > **Note:**
@@ -309,8 +311,9 @@ Confirm payment order:
      * @param $customer_bank
      * @param $transaction_number
      * @param Image $image
-     * @param null $bank_account
-     * @param null $paid_date
+     * @param $bank_account(optional), default = null
+     * @param $paid_date(optional), default = null
+     * @param $bcc(optional), default = null
      */
      
     //you can create image for bank transfer that 
@@ -326,7 +329,9 @@ Confirm payment order:
                           'Bank BCA', 
                           'TRX-123', 
                           $img, 
-                          '0853909090')
+                          '0853909090',
+                          '2016-04-10',
+                          'bcc@mailinator.com')
 ```
 ---
 Void an Sales Order and it's invoice:
@@ -343,9 +348,10 @@ Submit a subscription email:
 ```php
     /*
      * @param $email
+     * @param $bcc(optional), default = null
      */
 
-    $subscribe = Roketin::subscribe('somebody@anythin.com')
+    $subscribe = Roketin::subscribe('somebody@anythin.com', 'bcc@mailinator.com')
 ```
 
 ## Message
@@ -357,15 +363,39 @@ Send a message to Roketin Engine Inbox:
      * @param $sender_phone
      * @param $message_title
      * @param $message_body
+     * @param $bcc(optional), default = null
      */
 
     $msg = Roketin::message()
                     ->send(
-                    'reno',
-                    'smw@mailinator.com',
+                    'test',
+                    'test@mailinator.com',
                     '123123',
                     'test mesage',
-                    'hai')
+                    'hai',
+                    'bcc@mailinator.com')
+```
+
+## Join
+Send a join message to Roketin Engine Inbox:
+```php
+    /*
+     * @param $sender_name
+     * @param $sender_email
+     * @param $sender_phone
+     * @param $message_title
+     * @param $message_body
+     * @param $bcc(optional), default = null
+     */
+
+    $msg = Roketin::message()
+                    ->send(
+                    'test',
+                    'test@mailinator.com',
+                    '123123',
+                    'test mesage',
+                    'hai',
+                    'bcc@mailinator.com')
 ```
 
 ## Vouchers
@@ -404,10 +434,11 @@ invalidate a voucher (use voucher):
      * @param $phone
      * @param $password
      * @param $password_confirmation
+     * @param $bcc(optional), default = null
      * @return user object
      */
 
-    $user = Roketin::user()->register('first_name', 'last_name', 'email', 'phone', 'password', 'password_confirmation');
+    $user = Roketin::user()->register('first_name', 'last_name', 'email', 'phone', 'password', 'password_confirmation', 'bcc');
 ```
 
 User activation:
@@ -436,11 +467,12 @@ Forgot password (generate and send token to user email):
 ```php
     /*
      * @param $email
+     * @param $bcc(optional), default = null
      * @return true if success activation
      * @return error object if present
      */
 
-    Roketin::user()->forgot('someone@somthing.com');
+    Roketin::user()->forgot('someone@somthing.com', 'bcc@mailinator.com');
 ```
 
 
@@ -450,11 +482,12 @@ Reset password:
      * @param $token
      * @param $password
      * @param $password_confirmation
+     * @param $bcc(optional), default = null
      * @return true if success activation
      * @return error object if present
      */
 
-    Roketin::user()->resetPassword('token','asdf','asdf');
+    Roketin::user()->resetPassword('token','asdf','asdf', 'bcc@mailinator.com');
 ```
 
 Login:

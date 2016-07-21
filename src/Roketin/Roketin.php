@@ -160,9 +160,9 @@ class Roketin
      * @param $email
      * @return mixed
      */
-    public function subscribe($email)
+    public function subscribe($email, $bcc = null)
     {
-        return $this->callAPI("subscribe", ["email" => $email], "POST");
+        return $this->callAPI("subscribe", ["email" => $email, "bcc" => $bcc], "POST");
     }
 
     /**
@@ -205,6 +205,11 @@ class Roketin
     public function user()
     {
         return new RUserFunction();
+    }
+
+    public function b2b()
+    {
+        return new RB2b();
     }
 
     /**

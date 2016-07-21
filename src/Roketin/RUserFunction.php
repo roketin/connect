@@ -21,14 +21,15 @@ class RUserFunction extends Roketin
      * @param $phone
      * @param $password
      * @param $password_confirmation
+     * @param $bcc
      * @return mixed
      */
-    public function register($first_name, $last_name, $email, $phone, $password, $password_confirmation)
+    public function register($first_name, $last_name, $email, $phone, $password, $password_confirmation, $bcc)
     {
         $password              = $this->encrypter->encrypt($password);
         $password_confirmation = $this->encrypter->encrypt($password_confirmation);
 
-        $result = $this->callAPI("user/register", compact('first_name', 'last_name', 'email', 'phone', 'password', 'password_confirmation'), "POST");
+        $result = $this->callAPI("user/register", compact('first_name', 'last_name', 'email', 'phone', 'password', 'password_confirmation', 'bcc'), "POST");
         return $result;
     }
 
@@ -60,11 +61,12 @@ class RUserFunction extends Roketin
 
     /**
      * @param $email
+     * @param $bcc
      * @return mixed
      */
-    public function forgot($email)
+    public function forgot($email, $bcc = null)
     {
-        $result = $this->callAPI("user/password/forgot", compact('email'), "POST");
+        $result = $this->callAPI("user/password/forgot", compact('email', 'bcc'), "POST");
         if (!isset($result->errors)) {
             return true;
         }
@@ -75,14 +77,15 @@ class RUserFunction extends Roketin
      * @param $token
      * @param $password
      * @param $password_confirmation
+     * @param $bcc
      * @return mixed
      */
-    public function resetPassword($token, $password, $password_confirmation)
+    public function resetPassword($token, $password, $password_confirmation, $bcc = null)
     {
         $password              = $this->encrypter->encrypt($password);
         $password_confirmation = $this->encrypter->encrypt($password_confirmation);
 
-        $result = $this->callAPI('user/password/reset/' . $token, compact('password', 'password_confirmation'), "POST");
+        $result = $this->callAPI('user/password/reset/' . $token, compact('password', 'password_confirmation', 'bcc'), "POST");
         if (!isset($result->errors)) {
             return true;
         }

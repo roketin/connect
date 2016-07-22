@@ -16,7 +16,7 @@ Documentation for the Roketin API can be found on the [Documentation](http://doc
 ```php
 "require": {
     "laravel/framework": "5.0.*",
-    "roketin/connect": "v0.0.4"
+    "roketin/connect": "v0.0.5"
 }
 ```
 

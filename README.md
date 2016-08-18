@@ -16,7 +16,7 @@ Documentation for the Roketin API can be found on the [Documentation](http://doc
 ```php
 "require": {
     "laravel/framework": "5.0.*",
-    "roketin/connect": "v0.0.5"
+    "roketin/connect": "v0.0.6"
 }
 ```
 
@@ -70,13 +70,14 @@ Next, run the Composer update command from the Terminal:
 * [Grouping](#grouping)
 * [Pagination](#pagination)
 * [Tags](#tags)
+* [Archives](#archives)
 * [Shipping](#shipping)
 * [Sales Order](#order)
 * [Subscribe](#subscribe)
 * [Message](#message)
 * [B2b](#join)
-* [Voucher](#voucher)
-* [Users](#user)
+* [Vouchers](#vouchers)
+* [Users](#users)
 
 ## Basic
 
@@ -227,6 +228,16 @@ Get all posts by tag:
      * @param $is_blog (optional) default value is false
      */
     $posts = Roketin::tags('tag_1;tag_2',false)->get()
+```
+
+## Archives
+
+Get archives by year:
+```php
+    /*
+     * @param $year (optional) default value is '2016'
+     */
+    $archive = Roketin::archives('2016')->get()
 ```
 
 ## Shipping
@@ -424,7 +435,7 @@ invalidate a voucher (use voucher):
     $check = Roketin::voucher()->invalidate('AS123D')
 ```
    
-   # User
+# Users
    Register new user:
 ```php
     /*

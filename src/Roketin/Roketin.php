@@ -177,6 +177,15 @@ class Roketin
     /**
      * @return mixed
      */
+    public function archives($year = '2016')
+    {
+        $this->routes = "archives/" . $year;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
     public function shipping()
     {
         return new RShipping();

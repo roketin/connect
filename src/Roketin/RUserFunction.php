@@ -115,6 +115,7 @@ class RUserFunction extends Roketin
         $array['old_password'] = $this->encrypter->encrypt($array['old_password']);
         if (isset($array['password'])) {
             $array['password'] = $this->encrypter->encrypt($array['password']);
+            $array['password_confirmation'] = $this->encrypter->encrypt($array['password_confirmation']);
         }
 
         return $this->callAPI('user/update?token=' . session('token'), $array, "POST");

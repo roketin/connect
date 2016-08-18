@@ -177,10 +177,9 @@ class Roketin
     /**
      * @return mixed
      */
-    public function archives($year = '2016')
+    public function archives($tags = null, $year = '2016')
     {
-        $this->routes = "archives/" . $year;
-        return $this;
+        return $this->callAPI("archives/". $year, ["tags" => $tags], "GET");
     }
 
     /**

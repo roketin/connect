@@ -235,9 +235,10 @@ Get all posts by tag:
 Get archives by year:
 ```php
     /*
+     * @param $tags (optional) default value is '', multiple (; as separator)
      * @param $year (optional) default value is '2016'
      */
-    $archive = Roketin::archives('2016')->get()
+    $archive = Roketin::archives('tags;tags2;another tag','2016')->get()
 ```
 
 ## Shipping

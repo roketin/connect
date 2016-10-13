@@ -24,7 +24,7 @@ class RUserFunction extends Roketin
      * @param $bcc
      * @return mixed
      */
-    public function register($first_name, $last_name, $email, $phone, $password, $password_confirmation, $bcc)
+    public function register($first_name, $last_name, $email, $phone, $password, $password_confirmation, $bcc = null)
     {
         $password              = $this->encrypter->encrypt($password);
         $password_confirmation = $this->encrypter->encrypt($password_confirmation);

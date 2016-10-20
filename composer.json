@@ -11,8 +11,8 @@
     ],
     "require": {
         "php": "^5.5.9 || ^7.0",
-        "illuminate/http": "5.1.* || 5.2.*",
-        "illuminate/support": "5.1.* || 5.2.*",
+        "illuminate/http": "5.1.* || 5.*",
+        "illuminate/support": "5.1.* || 5.*",
         "guzzlehttp/guzzle": "~5.3|~6.0",
         "intervention/image": "^2.3"
     },

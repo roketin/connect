@@ -21,13 +21,9 @@ class ROrder extends Roketin
      * @param array $bcc
      * @return mixed
      */
-    public function create(array $generalData, array $customerData, array $products, $bcc = null)
+    public function create(array $generalData, array $customerData, array $products, $bcc = null, array $additionalCosts = [], array $coupon = [])
     {
-        if (!is_null($bcc)) {
-            $params = array_merge(["general" => $generalData], ["customer_data" => $customerData], ["product_detail" => $products]);
-        } else {
-            $params = array_merge(["general" => $generalData], ["customer_data" => $customerData], ["product_detail" => $products], ['bcc' => $bcc]);
-        }
+        $params = array_merge(["general" => $generalData], ["customer_data" => $customerData], ["product_detail" => $products], ['bcc' => $bcc], ["additional_cost" => $additionalCosts], ["coupon" => $coupon]);
 
         return $this->callAPI("order", $params, "POST");
     }

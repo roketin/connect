@@ -16,7 +16,7 @@ Documentation for the Roketin API can be found on the [Documentation](http://doc
 ```php
 "require": {
     "laravel/framework": "5.0.*",
-    "roketin/connect": "v0.0.7"
+    "roketin/connect": "v0.0.8"
 }
 ```
 
@@ -78,6 +78,7 @@ Next, run the Composer update command from the Terminal:
 * [B2b](#join)
 * [Vouchers](#vouchers)
 * [Users](#users)
+* [Others](#others)
 
 ## Basic
 
@@ -89,6 +90,7 @@ You can call a Roketin Object by using: **Roketin::model()->get()**
     $menus = Roketin::menus()->get();
     $posts = Roketin::posts()->get();
     $products = Roketin::products()->get();
+    $variants = Roketin::variants()->get();
     etc..
 ```
 
@@ -196,6 +198,7 @@ Fetch a Roketin Object API by grouping on it's field:
      * /
 
     $posts = Roketin::posts()->groupBy('created_at')->get();
+    $posts = Roketin::posts()->groupBy('id')->groupBy('created_at')->get();
 ```
   
 ## Pagination
@@ -388,8 +391,8 @@ Send a message to Roketin Engine Inbox:
                     'bcc@mailinator.com')
 ```
 
-## Join
-Send a join message to Roketin Engine Inbox:
+## Message
+Send a message to Roketin Engine Inbox:
 ```php
     /*
      * @param $sender_name
@@ -553,4 +556,16 @@ Logout:
      */
 
     Roketin::auth()->logout();
+```
+
+## Others
+
+Get Product Variants By Category:
+```php
+    /*
+     * @param $category_name
+     * @return variants object
+     */
+
+    Roketin::variantsByCategory($category_name)->get();
 ```

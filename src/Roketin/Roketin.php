@@ -135,7 +135,7 @@ class Roketin
      */
     public function groupBy($field)
     {
-        $this->routes .= "&group=" . $field;
+        $this->routes .= "&group[]=" . $field;
         return $this;
     }
 
@@ -180,6 +180,12 @@ class Roketin
     public function archives($tags = null, $year = '2016')
     {
         return $this->callAPI("archives/". $year, ["tags" => $tags], "GET");
+    }
+
+    public function variantsByCategory($category)
+    {
+        $this->routes = 'variants/' . $category . '?';
+        return $this;
     }
 
     /**

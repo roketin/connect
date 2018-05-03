@@ -275,7 +275,9 @@ class Roketin
     protected function _camelToSnake($val)
     {
         return preg_replace_callback('/[A-Z]/',
-            create_function('$match', 'return "_" . strtolower($match[0]);'),
+            function($match){
+                return "_" . strtolower($match[0]);
+            },
             $val);
     }
 }

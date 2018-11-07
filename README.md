@@ -47,20 +47,12 @@ Next, run the Composer update command from the Terminal:
 4. Create an .env file based on .env.example file and change the value based on client credentials
   
   ```
-    APP_ENV=local
-    APP_DEBUG=true
-    APP_KEY=somestringrandom
-    APP_URL=http://localhost
-
     ROKETIN_API=http://dev.roketin.com/api/v2.2/
     ROKETIN_PUBLIC=http://dev.roketin.com/
 
     ROKETIN_TOKEN=aBCd1234
     ROKETIN_USERNAME=roketin
     ROKETIN_RX=4241639264053293060625251241576152575759
-
-    VERITRANS_SERVER=494DKU0E71241K7BC15597DACA94D1F43
-    VERITRANS_ENVIRONMENT=sandbox
   ```
 
 ## HOW TO USE
